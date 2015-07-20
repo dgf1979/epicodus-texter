@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
+  gem 'dotenv-rails'
 end
 
 gem 'bootstrap-sass', '~> 3.2.0'
