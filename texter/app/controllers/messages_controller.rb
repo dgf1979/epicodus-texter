@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   end
   def new
     @message = Message.new
+    @contacts = Contact.all
   end
   def create
     @message = Message.new(message_params)
@@ -21,6 +22,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:to, :from, :body)
+    params.require(:message).permit(:to, :from, :body).merge(:from => ENV['FROM_NUMBER'])
   end
 end
