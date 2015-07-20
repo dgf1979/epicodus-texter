@@ -6,15 +6,26 @@ class MessagesController < ApplicationController
     @message = Message.new
     @contacts = Contact.all
   end
+
   def create
-    @message = Message.new(message_params)
-    if @message.save
-      flash[:notice] = "Your Message was sent!"
-      redirect_to new_message_path
-    else
-      render 'new'
+    @contacts = Contact.all
+    contact_array = []
+    message_params[:to].each do |number|
+      contact = Contact.where(phone_number: number)[0]
+      @message = Message.new(to: number, from: message_params[:from], body: message_params[:body])
+      if @message.save
+        contact_array.push(contact.name)
+      end
     end
+
+    flash[:notice] = "Sent to: #{contact_array.join(', ')}"
+
+
+    redirect_to new_message_path
   end
+
+
+
 
   def show
     @message = Message.find(params[:id])
@@ -22,6 +33,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:to, :from, :body).merge(:from => ENV['FROM_NUMBER'])
+    params.require(:message).permit(:from, :body, :to => []).merge(:from => ENV['FROM_NUMBER'])
   end
 end

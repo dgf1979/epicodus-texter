@@ -2,7 +2,7 @@
 
 <%= form_for @message do |f| %>
     <%= f.label :to %>
-    <%= f.collection_select(:to, @contacts, :phone_number, :name) %>
+    <%= f.collection_select(:to, @contacts, :phone_number, :name, {}, { :multiple => true, :size => 5 }) %>
     <%= f.label :body %>
     <%= f.text_field :body %>
     <%= f.submit :submit %>
