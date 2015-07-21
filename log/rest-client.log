@@ -1,0 +1,6 @@
+RestClient.get "https://en.wikipedia.org/w/api.php", "action=query&list=search&format=json&srsearch=portland", "Accept"=>"*/*; q=0.5, application/xml", "Accept-Encoding"=>"gzip, deflate", "Content-Length"=>"54", "Content-Type"=>"application/x-www-form-urlencoded"
+# => 200 OK | text/html 6606 bytes
+RestClient.get "https://en.wikipedia.org/w/api.php", "action=query&list=search&format=json&srsearch=portland", "Accept"=>"*/*; q=0.5, application/xml", "Accept-Encoding"=>"gzip, deflate", "Content-Length"=>"54", "Content-Type"=>"application/x-www-form-urlencoded"
+# => 200 OK | text/html 6604 bytes
+RestClient.get "https://en.wikipedia.org/w/api.php?", "action=query&list=search&format=json&srsearch=portland", "Accept"=>"*/*; q=0.5, application/xml", "Accept-Encoding"=>"gzip, deflate", "Content-Length"=>"54", "Content-Type"=>"application/x-www-form-urlencoded"
+# => 200 OK | text/html 6607 bytes
