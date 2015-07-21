@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :messages, :only => [:index, :new, :create, :show]
 
   resources :contacts
-  post 'reply', :to => 'replies#index'
+  post 'reply', :to => 'replies#default'
 end

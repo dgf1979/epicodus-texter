@@ -10,7 +10,7 @@ Demonstrate API interactions in Rails using Twilio SMS service
 
 ### Author(s) ###
 
-Drew Finstrom & Clari Philiastides
+Drew Finstrom & Cleri Philiastides
 
 ### Prereqs ###
 ```
