@@ -2,7 +2,7 @@
 
 <ul>
   <% @messages.each do |message| %>
-  <li><%= link_to message.body, message_path(message)%></li>
+  <li>"<%= message.body %>" sent to <strong><%= Contact.from_number(message.to) %></strong> from <strong><%= Contact.from_number(message.from) %></strong></li>
 <% end %>
 </ul>
 

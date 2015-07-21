@@ -4,17 +4,19 @@ class MessagesController < ApplicationController
   end
   def new
     @message = Message.new
-    @contacts = Contact.all
+    @contacts = Contact.where.not(name: "Twilio")
   end
 
   def create
-    @contacts = Contact.all
+    @contacts = Contact.where.not(name: "Twilio")
     contact_array = []
     message_params[:to].each do |number|
       contact = Contact.where(phone_number: number)[0]
       @message = Message.new(to: number, from: message_params[:from], body: message_params[:body])
-      if @message.save
-        contact_array.push(contact.name)
+      if SMS.send(@message)
+        if @message.save
+          contact_array.push(contact.name)
+        end
       end
     end
 
